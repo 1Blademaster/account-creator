@@ -31,7 +31,7 @@ This is a simple python script which can be imported into other programs to help
 
 		ac.enterData()
 		
-		ac.close()
+		ac.close() # Call this at the end of your script to close all browser instances
 ```
 ##### 2:
 ```python
@@ -44,8 +44,8 @@ if __name__ == '__main__':
 
 	req_proxy = RequestProxy()
 	proxies = req_proxy.get_proxy_list()
-	proxies = [proxy for proxy in req_proxy.get_proxy_list() if proxy.country == 'United Kingdom']
-	proxyStr = proxies[0].get_address()
+	proxies = [proxy for proxy in req_proxy.get_proxy_list() if proxy.country == 'United Kingdom'] # Get a list of proxies from the United Kingdom
+	proxyStr = proxies[0].get_address() # Get the string for the proxy in the format IP:PORT
 
 	ac = AccountCreator(proxyStr=proxyStr, url=signup_site)
 
