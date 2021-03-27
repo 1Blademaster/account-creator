@@ -61,4 +61,5 @@ if __name__ == '__main__':
 #### TODO:
 1. Allow the use of chrome
 2. Allow custom name file for name generation
-3. Add other cool stuff
+3. Use multiple tabs for email generation and website viewing (same window, 2 tabs)
+4. Add other cool stuff
