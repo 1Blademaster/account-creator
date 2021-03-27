@@ -6,6 +6,7 @@ This is a simple python script which can be imported into other programs to help
 - You can use proxies with the script to evade IP blocks
 - Generate email addresses from 10minutemail, this will remain open so access to the inbox is available
 - The script is semi-automatic, so you can evade captures easily just by manually clicking them if needed
+- The *names.txt* file can be updated with however many names you like/want. Make sure they are in the format: FIRSTNAME LASTNAME (seperated by a space)
 
 #### Requirements:
 - Need python 3.7 or above
