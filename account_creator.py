@@ -11,26 +11,38 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 
 
 class AccountCreator:
-	def __init__(self, proxyStr, url=None, _logging=False):
+	def __init__(self, proxyStr=None, url=None, _logging=False):
+		"""This is the method which is called when the object in initilised.
+
+		Args:
+			proxyStr (String, optional): A string fo the proxy ip and port to be used (ip:port). Defaults to None.
+			url (String, optional): A string of the website to access. Defaults to None.
+			_logging (Bool, optional): A boolean to determine if selenium logs should be displayed or not. Defaults to False.
+		"""
+
 		init(autoreset=True)
+
 		if not _logging:
 			logger = logging.getLogger('selenium.webdriver.remote.remote_connection') # To disable selenium logging unless logging=True
 			logger.propagate = False
 
-		self.proxyObj = Proxy({
-			'proxyType': ProxyType.MANUAL,
-			'httpProxy': proxyStr,    
-			'sslProxy': proxyStr,    
-		})
+		if proxyStr:
+			self.proxyObj = Proxy({
+				'proxyType': ProxyType.MANUAL,
+				'httpProxy': proxyStr,    
+				'sslProxy': proxyStr,    
+			})
+		else:
+			self.proxyObj = None
 
 		self.url = url
 		if self.url:
-			self.driver = webdriver.Firefox(proxy=self.proxyObj)
+			self.driver = webdriver.Firefox(proxy=self.proxyObj) if proxyObj else webdriver.Firefox()
 			self.driver.get(url)
 		self.email_driver = None
 
 	def getEmail(self): # Gets a burner email from 10minutemail, window stays open incase inbox is needed.
-		self.email_driver = webdriver.Firefox(proxy=self.proxyObj)
+		self.email_driver = webdriver.Firefox(proxy=self.proxyObj) if proxyObj else webdriver.Firefox()
 		self.email_driver.get("https://10minutemail.com/")
 
 		time.sleep(2)
@@ -107,18 +119,5 @@ class AccountCreator:
 			self.driver.close()
 		if self.email_driver:
 			self.email_driver.close()
-
-if __name__ == '__main__':
-	req_proxy = RequestProxy()
-	proxies = req_proxy.get_proxy_list()
-
-	proxies = [proxy for proxy in req_proxy.get_proxy_list() if proxy.country == 'United Kingdom']
-
-	for prox in proxies:
-		PROXY = prox.get_address()
-
-		Bot(PROXY, 'https://signup.com/').enterData()
-
-		break
 
 		
