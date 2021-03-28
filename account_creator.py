@@ -37,12 +37,12 @@ class AccountCreator:
 
 		self.url = url
 		if self.url:
-			self.driver = webdriver.Firefox(proxy=self.proxyObj) if proxyObj else webdriver.Firefox()
+			self.driver = webdriver.Firefox(proxy=self.proxyObj) if self.proxyObj else webdriver.Firefox()
 			self.driver.get(url)
 		self.email_driver = None
 
 	def getEmail(self): # Gets a burner email from 10minutemail, window stays open incase inbox is needed.
-		self.email_driver = webdriver.Firefox(proxy=self.proxyObj) if proxyObj else webdriver.Firefox()
+		self.email_driver = webdriver.Firefox(proxy=self.proxyObj) if self.proxyObj else webdriver.Firefox()
 		self.email_driver.get("https://10minutemail.com/")
 
 		time.sleep(2)
