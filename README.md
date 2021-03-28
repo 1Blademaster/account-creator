@@ -2,7 +2,7 @@
 
 This is a simple python script which can be imported into other programs to help either create random, bogus data or enter data into a website provided. The websites are opened using Firefox and selenium, this is so that the script is semi-automatic, if anything needs to be done manually it can be done.
 
-You can check out my blog post at [dev.to](https://dev.to/1blademaster/sign-up-form-automation-with-python-6hg) to learn more
+You can check out my blog post at [dev.to](https://dev.to/1blademaster/sign-up-form-automation-with-python-6hg) to learn more as well!
 
 #### Features:
 - You can use proxies with the script to evade IP blocks
