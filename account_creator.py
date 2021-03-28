@@ -115,7 +115,7 @@ class AccountCreator:
 		print(f'{Fore.GREEN}Please enter the birthdate manually: {data[4]}')
 
 	def close(self): # Closes all drivers if they are open
-		if url:
+		if self.url:
 			self.driver.close()
 		if self.email_driver:
 			self.email_driver.close()
